@@ -1,0 +1,135 @@
+// NavbarButton
+.navbar_button {
+    .talk_button {
+        display: flex;
+        align-items: center;
+        border: none;
+        padding: .6em 1.65em;
+        background-color: #8CC5DD;
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        cursor: none;
+        transform: skew(40deg);
+    
+        a {
+            display: block;
+            text-decoration: none;
+            transform: skew(-40deg);
+    
+            span {
+                position: relative;
+                z-index: 10;
+                transition: color .4s;
+                color: white;
+                display: block;
+                transform: skew(0deg); /* No skew */
+            }
+        }
+    
+        &::before, &::after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+    
+        &::before {
+            content: "";
+            background: #000;
+            width: 120%;
+            left: -10%;
+            transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+        }
+    
+        &:hover span {
+            color: black;
+        }
+    
+        &:hover::before {
+            transform: translate3d(100%, 0, 0);
+        }
+    }
+}
+
+// ProjectButton
+.cn {
+    max-width: 2000px;
+    margin: 0 auto;
+
+    button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: .467em;
+        padding: .5em 2.25em;
+        font-size: 1.1em;
+        cursor: none;
+        background-color: #171717;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        transition: all .4s;
+        text-transform: uppercase;
+        font-style: italic;
+        margin-top: 30px;
+
+        &:hover {
+            box-shadow: 0 7px 0 -2px #cbd5e1, 0 15px 0 -4px #39a3db, 0 16px 10px -3px #39a2db;
+            transition: all 0.7s;
+        }
+    }
+}
+
+// SendButton
+.send {
+    display: inline-flex;
+    justify-self: flex-end;
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: .467em;
+        padding: .5rem 2.25rem;
+        font-size: 1.1em;
+        cursor: none;
+        background-color: #171717;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        transition: all .4s;
+        text-transform: uppercase;
+        font-style: italic;
+
+        &:hover {
+          box-shadow: 0 7px 0 -2px #cbd5e1, 0 15px 0 -4px #39a3db, 0 16px 10px -3px #39a2db;
+          transition: all 0.7s;
+        }
+
+        i {
+            color: greenyellow;
+        }
+    }
+}
+
+// MEDIA QUERIES
+
+@media screen and (max-width: 800px) {
+    .navbar_button {
+        .talk_button {
+            display: none;
+        }
+    }
+    .cn {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 912px) {
+    .send {
+        justify-self: center;
+        margin-top: 1em;
+    }
+}

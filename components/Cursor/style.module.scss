@@ -1,0 +1,26 @@
+.custom_cursor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    background-color: white;
+
+    .cursor_text {
+        font-size: 5px;
+        letter-spacing: 1px;
+        display: none;
+        color: red;
+    }
+
+    @media screen and (min-width: 280px) and (max-width: 1280px) {
+        visibility: hidden;
+    }
+}

@@ -1,0 +1,6 @@
+export * from './Hero/index'
+export * from './Best/index'
+export * from './Stages/index'
+export * from './Skills/index'
+export * from './Contacts/index'
+export * from './Footer/index'

@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  background-color: white;
+  cursor: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  -webkit-user-drag: none;
+}
+
+h1, h2, h3, h4, h5,
+p, a, span, div {
+  cursor: none;
+} 
+
+ol, ul, li, a {
+  color: black;
+  list-style: none;
+  text-decoration: none;
+}

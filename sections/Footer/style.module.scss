@@ -1,0 +1,32 @@
+.footer {
+    max-width: 2000px;
+    margin: 0 auto;
+
+    .footer_container {
+        display: grid;
+        place-items: center;
+        gap: 2rem;
+
+        .line {
+            display: grid;
+            place-items: center;
+
+            &::before {
+                content: '';
+                width: 90%;
+                height: 2px;
+                background-color: black;
+                position: absolute;
+            }
+        }
+
+        .footer_copy {
+            font-size: small;
+
+            span {
+                color: rgb(18, 117, 231);
+                font-weight: bold;
+            }
+        }
+    }
+}

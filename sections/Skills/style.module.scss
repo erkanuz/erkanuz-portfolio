@@ -1,0 +1,82 @@
+@import '@/components/Accordions/Accordion.module.scss';
+
+.skills {
+  display: grid;
+  max-width: 2000px;
+  margin: 0 auto;
+  padding: 2rem 1rem 2rem 1rem;
+
+  .stage_title {
+    text-transform: uppercase;
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: normal;
+    display: inline-flex;
+  }
+
+  .icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    max-width: 100%;
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+    margin-bottom: 20px;
+  }
+
+  .mobile {
+    display: none;
+
+    @media only screen and (max-width: 768px) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      max-width: 100%;
+      border-bottom: 1px solid;
+      border-top: 1px solid;
+      margin-bottom: 20px;
+    }
+  }
+
+  .skills_content {
+    display: flex;
+    align-items: start;
+    justify-content: space-around;
+
+    .images_container {
+      display: grid;
+      place-items: center;
+
+      img {
+        display: block;
+        max-width: 80%;
+        height: auto;
+      }
+    }
+  }
+
+  .accordion_wrapper {
+    @include accordionStyles;
+  }
+}
+
+@media (max-width: 800px) {
+
+  .skills {
+    .skills_content {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 1rem;
+    }
+  }   
+
+  .skills .icons {
+    display: none;
+  }
+}

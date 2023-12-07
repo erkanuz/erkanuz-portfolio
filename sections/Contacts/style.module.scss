@@ -1,0 +1,117 @@
+.contact {
+  display: grid;
+  max-width: 2000px;
+  margin: 0 auto;
+
+  .contact_title {
+    text-transform: uppercase;
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: normal;
+    display: inline-flex;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1800px;
+    margin: 0 auto;
+
+    div:nth-child(2) {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      form {
+        display: grid;
+        gap: 3.4em;
+
+        .addgap {
+          display: flex;
+          justify-content: space-between;
+          gap: 1em;
+        }
+
+        .forms {
+          position: relative;
+          width: 300px;
+
+          .input {
+            color: black;
+            font-size: 0.9rem;
+            background-color: transparent;
+            width: 100%;
+            box-sizing: border-box;
+            padding-inline: 0.5em;
+            padding-block: 0.7em;
+            border: none;
+            border-bottom: 1px solid rgba(221, 221, 221, .39);
+
+            &:hover {
+              background: #4985e01f;
+            }
+
+            &:focus {
+              outline: none;
+            }
+          }
+
+          .input:focus~.inputborder {
+            width: 100%;
+          }
+
+          .inputborder {
+            position: absolute;
+            background: #5891ff;
+            width: 0%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            transition: 0.3s;
+          }
+        }
+      }
+    }
+
+    img {
+      display: block;
+      max-width: 50%;
+      height: auto;
+    }
+  }
+}
+
+@media (max-width: 912px) {
+  .contact {
+    .container {
+      flex-direction: column-reverse;
+
+      div:nth-child(2) {
+
+        form {
+          .addgap {
+            flex-direction: column;
+            gap: 1em;
+          }
+
+          .forms {
+            width: 100%;
+          }
+
+          textarea {
+            margin-top: .5rem;
+          }
+        }
+      }
+
+      img {
+        max-width: 80%;
+        margin: 0 auto;
+        display: block;
+      }
+    }
+  }
+}
