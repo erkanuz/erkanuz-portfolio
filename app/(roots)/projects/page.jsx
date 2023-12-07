@@ -9,7 +9,7 @@ const page = () => {
     <div className={styles.projects}>
         <Cursor />
         <Navbar />
-        {/* <Data /> */}
+        <Data />
         <Footer />
     </div>
   )

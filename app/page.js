@@ -29,7 +29,7 @@ export default function Home() {
          <Best />
          <Stages />
          <Skills />
-         {/* <Contact /> */}
+         <Contact />
          <Footer />
     </main>
   )
