@@ -3,6 +3,11 @@ import React, { useEffect } from 'react';
 import styles from './style.module.scss';
 import { gsap } from 'gsap/gsap-core';
 
+import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
+import { CSSPlugin } from 'gsap/CSSPlugin'; // Add this import
+
+gsap.registerPlugin(MotionPathPlugin, CSSPlugin);
+
 export const Cursor = () => {
     useEffect(() => {
         const cursor = document.getElementById('custom-cursor');

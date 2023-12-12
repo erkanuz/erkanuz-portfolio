@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-         {isLoading && <Preloader onComplete={preloaderComplete} />}
+         {isLoading && <Preloader currentRoute="/" onComplete={preloaderComplete} />}
          <Cursor />
          <Navbar />
          <Hero />

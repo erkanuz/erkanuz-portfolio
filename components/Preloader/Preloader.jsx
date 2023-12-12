@@ -7,12 +7,14 @@ import { gsap } from 'gsap/gsap-core'
 const start = 'M 0 100 V 50 Q 50 0 100 50 V 100 z';
 const end = 'M 0 100 V 0 Q 50 0 100 0 V 100 z';
 
-export const Preloader = () => {
+export const Preloader = ({currentRoute }) => {
   const containerRef = useRef(null);
   const preloaderRef = useRef(null);
 
   const [index, setIndex] = useState(0);
-  const words = ["welcome", "to", "my", "personal", "portfolio"]
+  const words = currentRoute === '/about' 
+  ? ["welcome", "to", "the", "about", "me"]
+  : ["welcome", "to", "my", "personal", "portfolio"];
 
   useEffect(() => {
     const delay = index === 0 ? 1000 : 200;

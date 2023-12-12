@@ -28,7 +28,7 @@ const page = () => {
     
     return (
         <div className={styles.about}>
-            {isLoading && <Preloader onComplete={preloaderComplete} />}
+            {isLoading && <Preloader currentRoute='/about' onComplete={preloaderComplete} />}
             <Cursor />
             <Navbar />
             <div className={styles.container}>
