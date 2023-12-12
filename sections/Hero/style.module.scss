@@ -189,7 +189,7 @@
   }
 }
 
-@media screen and (min-width: 360px) and (max-width: 800px) {
+@media screen and (max-width: 800px) {
   .wrapper {
 
     .first_content {
@@ -203,7 +203,7 @@
     
       .image {
         float: left;
-        shape-outside: polygon(0px 0px, 53.01% 22.8%, 58.27% 40%, 10.71% 58%);
+        shape-outside: polygon(0px 0px, 53.01% 22.8%, 50.27% 40%, 10% 100%);
         margin-right: 4rem;
         width: 50px;
       }
@@ -233,6 +233,7 @@
       text-align: center;
 
       h2 {
+        font-family: 'Times New Roman', Times, serif;
         font-size: 38px;
         font-weight: 100;
         -webkit-text-stroke: 1px #000;

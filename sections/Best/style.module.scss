@@ -4,9 +4,17 @@
     font-size: 4vw;
     max-width: 80%;
 
-    font-family: Inter;
+    font-family: 'Times New Roman', Times, serif;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
+  }
+
+  @media screen and (max-width: 800px) { 
+    .double_title {
+      font-size: 1.25rem;
+      max-width: 100%;
+      text-align: justify;
+    }
   }
 }

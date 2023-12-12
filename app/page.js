@@ -12,7 +12,6 @@ export default function Home() {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-      window.scrollTo(0, 0);
     }, 4000)
   }, []);
 
