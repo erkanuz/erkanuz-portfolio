@@ -2,12 +2,11 @@
 import React from 'react'
 import styles from './style.module.scss'
 
-import { MagneticIcon } from '@/components/Icons/MagneticIcon'
-
 import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai'
 import { SiCodewars, SiLeetcode } from "react-icons/si";
 
 import Link from 'next/link'
+import { AnimatedText, MagneticIcon } from '@/components';
 
 const SocialLink = ({ href, icon }) => (
   <Link href={href}>
@@ -24,7 +23,7 @@ export const Hero = () => (
         <div className={styles.left_side}>
           <div className={styles.article}>
             <img src="/images/clouds.png" alt="" className={styles.image} />
-            <h1>Aspiring Front-End Developer with a passion for creating engaging web experiences.</h1>
+            <AnimatedText />
           </div>
 
           <div className={styles.mini_box}>
