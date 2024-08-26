@@ -1,7 +1,13 @@
 'use client';
 import styles from './style.module.scss'
 
+import Marquee from "react-fast-marquee";
 import { Accordion } from '@/components/Accordions';
+
+import React, { Suspense } from 'react';
+import SplineX from '@/components/Spline/Spline';
+
+const Spline = React.lazy(() => import('@splinetool/react-spline'));
 
 const context = [
     { id: 1, title: "Crafting Engaging User Experiences with React", description: "As a front-end developer, I specialize in creating visually appealing and interactive user interfaces using React. This powerful JavaScript library allows me to build dynamic web applications that captivate and engage users." },
@@ -39,23 +45,29 @@ export const Skills = () => {
                 <h1 className={styles.stage_title}>My technical Skills are /</h1>
             </div>
 
-            <div className={styles.icons}>
-                {iconData.map((icon, index) => (
-                    <img key={index} src={`/icons/${icon.name}.${icon.type}`} alt="" />
-                ))}
-            </div>
-
-            <div className={styles.mobile}>
-                {iconData.slice(0, 3).map((icon, index) => (
-                    <img key={index} src={`/icons/${icon.name}.${icon.type}`} alt="" />
-                ))}
+            <div className={styles.iconsContainer}>
+                <Marquee gradient={false} speed={50} className={styles.marquee}>
+                    {iconData.map((icon, index) => (
+                        <div key={index} className={styles.iconWrapper}>
+                            <img
+                                src={`/icons/${icon.name}.${icon.type}`}
+                                alt={icon.name}
+                                className={styles.icon}
+                            />
+                        </div>
+                    ))}
+                </Marquee>
             </div>
 
             <div className={styles.skills_content}>
                 <Accordion context={context} />
 
                 <div className={styles.images_container}>
-                    <img src="/images/workinglate.svg" alt="" />
+                    <div className={styles.splineX}>
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <SplineX />
+                        </Suspense>
+                    </div>
                 </div>
             </div>
 
