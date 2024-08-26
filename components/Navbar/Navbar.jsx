@@ -1,22 +1,30 @@
 'use client';
-import { useState, useEffect } from 'react';
-import styles from './style.module.scss'
+import React, { useState, useRef, useEffect } from 'react'
 
-import Link from 'next/link';
+import Link from 'next/link'
 import { usePathname } from 'next/navigation';
 
-import TimeDisplay from './TimeDisplay';
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 
-import { NavbarButton } from '../Buttons';
+import styles from './style.module.scss'
 
-const NavbarItems = [
-    { id: 1, title: "{ ...HOME }", link: '/' },
-    { id: 2, title: "{ ...ABOUT }", link: '/about' },
-    { id: 3, title: "{ ...PROJECTS }", link: '/projects' },
-  ]
+import NavbarModal from './NavbarModal';
+
+const menuLinks = [
+  { id: 1, title: "{ ...HOME }", link: '/' },
+  { id: 2, title: "{ ...ABOUT }", link: '/about' },
+  { id: 3, title: "{ ...PROJECTS }", link: '/projects' },
+]
+
+const socialLinks = [
+  { id: 1, title: "LinkedIn", to: '/' },
+  { id: 2, title: "Codewars", to: '/' },
+  { id: 3, title: "Github", to: '/' },
+  { id: 4, title: "Leetcode", to: '/' },
+]
 
 export const Navbar = () => {
-
   const [isActive, setIsActive] = useState(false);
   const pathname = usePathname();
 
@@ -24,7 +32,6 @@ export const Navbar = () => {
     // Check if there is an anchor in the URL
     const hash = window.location.hash;
     if (hash) {
-      // Find the target element by ID (in this case, 'contacts')
       const targetElement = document.getElementById(hash.substring(1));
       if (targetElement) {
         targetElement.scrollIntoView({ behavior: 'smooth' });
@@ -32,47 +39,86 @@ export const Navbar = () => {
     }
   }, []);
 
-  return (
-    <header className={styles.header}>
-      <a href="/" className={styles.logo}>Erkan</a>
+  const container = useRef();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-      <nav>
-        <ul>
-          {NavbarItems.map(item => (
-            <li key={item.id}>
-              <Link href={item.link}>
-                <span className={pathname === item.link ? styles.active : ''}>{item.title}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+  const tl = useRef();
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  useGSAP(() => {
+    gsap.set(".menu_link_item_holder", { y: 75 });
+    gsap.set(".social_items", { x: -100 });
+    gsap.set(".show_reels", { x: -200 });
+
+    tl.current = gsap.timeline({
+      paused: true
+    })
+      .to(".menu_overlay", {
+        duration: 1.25,
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+        ease: "power4.inOut"
+      })
+      .to(".menu_link_item_holder", {
+        y: 0,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power4.inOut",
+        delay: -0.75,
+      })
+      .to(".social_items", {
+        x: 0,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power4.inOut",
+        delay: -0.75,
+      })
+      .to(".show_reels", {
+        x: 0,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power4.inOut",
+        delay: -0.75,
+      })
+  }, { scope: container });
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      tl.current.play();
+    } else {
+      tl.current.reverse();
+    }
+  }, [isMenuOpen]);
+
+  return (
+    <header className={styles.menu_container} ref={container}>
+
+      {/*TOP MENU*/}
+      <nav className={styles.menu_bar}>
+        
+        {/*LOGO*/}
+        <div className={styles.menu_logo}>
+          <Link href={"/"} className={styles.logo}>
+            <img src="/logo.png" alt="Logo" style={{height: '60px', width: '60px', borderRadius: '50%'}}/>
+            <p>Erkan</p>
+          </Link>
+        </div>
+
+        {/*NAVBAR BUTTON*/}
+        <div className={styles.nav_button}
+        onClick={toggleMenu}>
+          <div onClick={() => setIsActive(!isActive)} className={styles.button}>
+            <div className={`${styles.burger} ${isActive ? styles.burgerActive : ''}`}></div>
+          </div>
+          <p className={styles.invisable}>Menu</p>
+        </div>
+
       </nav>
 
-      <span className={styles.time_display}><TimeDisplay /></span>
-
-      <NavbarButton />
-
-      <div onClick={() => setIsActive(!isActive)} className={styles.button}>
-        <div className={`${styles.burger} ${isActive ? styles.burgerActive : ''}`}></div>
-      </div>
-
-      <div className={`${styles.menu} ${isActive ? styles.open : ''}`}>
-        <div className={styles.body}>
-          <div className={styles.nav}>
-            <div className={styles.second_header}>
-              <p>Navigation</p>
-
-              {NavbarItems.map((item) => (
-                <li key={item.id}>
-                  <Link href={item.link}>
-                    <span className={pathname === item.link ? styles.active : ''}>{item.title}</span>
-                  </Link>
-                </li>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+      {/*NAVBAR_MODAL*/}
+      <NavbarModal menuLinks={menuLinks} socialLinks={socialLinks} className={isMenuOpen ? styles.active : ''} />
 
     </header>
   )
