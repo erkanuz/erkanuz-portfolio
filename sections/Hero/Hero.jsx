@@ -4,6 +4,7 @@ import styles from './style.module.scss'
 
 import Link from 'next/link'
 import { AnimatedText, MagneticIcon } from '@/components';
+import { Dancing_Script } from 'next/font/google';
 
 const SocialLink = ({ href, icon }) => (
   <Link href={href}>
