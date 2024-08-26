@@ -13,7 +13,7 @@ export const Stages = () => {
             </div>
             <div className={styles.boxes}>
                 <div className={styles.fimini}>
-                    <div>Research</div>
+                    <div data-target="target">Research</div>
                     <div>/02</div>
                 </div>
 
@@ -23,7 +23,7 @@ export const Stages = () => {
             </div>
             <div className={styles.boxes}>
                 <div className={styles.fimini}>
-                    <div>Prototyping</div>
+                    <div data-target="target">Prototyping</div>
                     <div>/03</div>
                 </div>
 
@@ -34,7 +34,7 @@ export const Stages = () => {
 
             <div className={styles.boxes}>
                 <div className={styles.fimini}>
-                    <div>Briefing</div>
+                    <div data-target="target">Briefing</div>
                     <div>/04</div>
                 </div>
 
@@ -44,7 +44,7 @@ export const Stages = () => {
             </div>
             <div className={styles.boxes}>
                 <div className={styles.fimini}>
-                    <div>Design</div>
+                    <div data-target="target">Design</div>
                     <div>/05</div>
                 </div>
 
@@ -55,7 +55,7 @@ export const Stages = () => {
 
             <div className={styles.boxes}>
                 <div className={styles.fimini}>
-                    <div>Finalization</div>
+                    <div data-target="target">Finalization</div>
                     <div>/06</div>
                 </div>
 
