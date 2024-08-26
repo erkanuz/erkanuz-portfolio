@@ -18,10 +18,10 @@ const menuLinks = [
 ]
 
 const socialLinks = [
-  { id: 1, title: "LinkedIn", to: '/' },
-  { id: 2, title: "Codewars", to: '/' },
-  { id: 3, title: "Github", to: '/' },
-  { id: 4, title: "Leetcode", to: '/' },
+  { id: 1, title: "LinkedIn", to: 'https://www.linkedin.com/in/erkan-uz-lil/' },
+  { id: 2, title: "Codewars", to: 'https://www.codewars.com/users/%20Qixing' },
+  { id: 3, title: "Github", to: 'https://github.com/erkanuz' },
+  { id: 4, title: "Leetcode", to: 'https://leetcode.com/_erkan/' },
 ]
 
 export const Navbar = () => {
