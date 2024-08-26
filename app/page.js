@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback } from 'react'
 import styles from './page.module.scss'
 
 import { Navbar, Cursor, Preloader } from '@/components/index'
-import { Hero, Projects, Stages, Skills, Contact, Footer } from '@/sections/index' 
+import { Hero, Projects, Stages, Skills, Contact, Footer, Paralax } from '@/sections/index' 
 
 export default function Home() {
 
@@ -26,6 +26,7 @@ export default function Home() {
          <Navbar />
          <Hero />
          <Projects />
+         <Paralax />
          <Stages />
          <Skills />
          <Contact />

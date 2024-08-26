@@ -1,0 +1,8 @@
+.section_paralax {
+    margin-top: 100px;
+    margin-bottom: 100px;
+
+    @media (min-width: 1024px) {
+        display: none;
+    }
+}

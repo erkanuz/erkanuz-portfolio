@@ -1,0 +1,126 @@
+.embla {
+  max-width: 48rem;
+  margin: auto;
+  --slide-height: 19rem;
+  --slide-spacing: 1rem;
+  --slide-size: 80%;
+
+  &__viewport {
+    overflow: hidden;
+  }
+
+  &__container {
+    display: flex;
+    touch-action: pan-y pinch-zoom;
+    margin-left: calc(var(--slide-spacing) * -1);
+  }
+
+  &__slide {
+    transform: translate3d(0, 0, 0);
+    flex: 0 0 var(--slide-size);
+    min-width: 0;
+    padding-left: var(--slide-spacing);
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__slide__img {
+    border-radius: 1.8rem;
+    display: block;
+    height: var(--slide-height);
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__slide__info {
+    padding: 1rem;
+    background-color: #f8f8f8;
+    border-radius: 1.8rem;
+    margin-top: 1rem;
+    text-align: start;
+
+    .embla__slide__date {
+      font-size: 12px;
+    }
+
+    .embla__slide__description {
+      font-size: 12px;
+    }
+
+    .embla__slide__link {
+      text-decoration: underline;
+
+      &:hover {
+        color: cornflowerblue;
+      }
+    }
+  }
+
+  &__controls {
+    display: flex;
+    grid-template-columns: auto 1fr;
+    gap: 1.2rem;
+    margin-top: 1.8rem;
+    padding: 0 1rem 0 1rem;
+    width: 100%;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__button {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.5);
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    touch-action: manipulation;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    box-shadow: inset 0 0 0 0.2rem #1d1c1c;
+    width: 3.6rem;
+    height: 3.6rem;
+    z-index: 1;
+    border-radius: 50%;
+    color: #000;
+
+    &:active {
+      background-color: #888;
+    }
+
+    &__svg {
+      width: 35%;
+      height: 35%;
+    }
+  }
+
+  &__parallax {
+    border-radius: 1.8rem;
+    border: 1px solid black;
+    height: 100%;
+    overflow: hidden;
+
+    &__layer {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    &__img {
+      max-width: none;
+      flex: 0 0 calc(115% + (var(--slide-spacing) * 2));
+      object-fit: cover;
+    }
+  }
+}
