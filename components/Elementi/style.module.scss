@@ -1,0 +1,66 @@
+    .elements {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 50px 100px 50px 100px;
+        transition: all .2s;
+        border-top: 1px solid rgb(201, 201, 201);
+
+        &:last-of-type {
+            border-bottom: 1px solid rgb(201, 201, 201);
+        }
+
+        &:hover {
+            opacity: .5;
+        }
+
+        h2 {
+            font-size: 60px;
+            margin: 0px;
+            font-weight: 400;
+            transition: all .4s;
+        }
+
+        p {
+            transition: all .4s;
+            font-weight: 300;
+        }
+
+        .info_proj {
+            text-align: end;
+
+            p:first-child {
+                font-weight: 500;
+            }
+
+            p:last-child {
+                font-size: 12px;
+                max-width: 500px;
+            }
+        }
+
+        &:hover {
+
+            h2 {
+                transform: translateX(-20px);
+                color: #7dd3fc;
+            }
+
+            div:first-of-type p {
+                transform: translateX(-20px);
+                transition: transform .5s ease-in-out;
+                transition-delay: .2s;
+            }
+
+            p {
+                transform: translateX(20px);
+            }
+
+            div:nth-of-type(2) p:last-of-type {
+                transform: translateX(20px); 
+                transition: transform .5s ease-in-out;
+                transition-delay: .2s;
+            }
+        }
+    }

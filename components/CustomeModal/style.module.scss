@@ -1,0 +1,33 @@
+.modalContainer {
+  display: grid;
+  place-items: center;
+  position: fixed;
+  pointer-events: none;
+  z-index: 100;
+  font-size: 11px;
+  overflow: hidden;
+  transform-origin: center;
+
+  gap: 10px;
+  
+    .modal {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+
+      color: white;
+
+      padding: 1px 15px;
+
+      border-radius: 20px;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    }
+
+    img {
+      height: auto;
+      border-radius: 5px;
+    }
+  }
