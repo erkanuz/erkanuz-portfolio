@@ -20,10 +20,10 @@ export const AnimatedText = () => {
   };
 
   return (
-    <h1>
+    <p>
       Aspiring{' '}
       <span className={getClassName(0)}>Front</span>-<span className={getClassName(1)}>End</span>{' '}
       <span className={getClassName(2)}>Developer</span> with a passion for creating engaging web experiences.
-    </h1>
+    </p>
   );
 };
