@@ -5,7 +5,7 @@
 
   .contact_title {
     text-transform: uppercase;
-    color: #000;
+    color: black;
     font-family: Inter;
     font-size: 20px;
     font-style: italic;
@@ -14,103 +14,87 @@
     display: inline-flex;
   }
 
-  .container {
+  div:nth-of-type(2) {
     display: flex;
-    justify-content: space-between;
-    max-width: 1800px;
-    margin: 0 auto;
-
-    div:nth-child(2) {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      form {
-        display: grid;
-        gap: 3.4em;
-
-        .addgap {
-          display: flex;
-          justify-content: space-between;
-          gap: 1em;
-        }
-
-        .forms {
-          position: relative;
-          width: 300px;
-
-          .input {
-            color: black;
-            font-size: 0.9rem;
-            background-color: transparent;
-            width: 100%;
-            box-sizing: border-box;
-            padding-inline: 0.5em;
-            padding-block: 0.7em;
-            border: none;
-            border-bottom: 1px solid rgba(221, 221, 221, .39);
-
-            &:hover {
-              background: #4985e01f;
-            }
-
-            &:focus {
-              outline: none;
-            }
-          }
-
-          .input:focus~.inputborder {
-            width: 100%;
-          }
-
-          .inputborder {
-            position: absolute;
-            background: #5891ff;
-            width: 0%;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            transition: 0.3s;
-          }
-        }
-      }
-    }
-
-    img {
-      display: block;
-      max-width: 50%;
-      height: auto;
-    }
+    flex-direction: column;
+    align-items: center;
   }
-}
 
-@media (max-width: 912px) {
-  .contact {
-    .container {
-      flex-direction: column-reverse;
+  div:nth-of-type(2) h2 {
+    font-weight: 300;
+  }
 
-      div:nth-child(2) {
+  div:nth-of-type(2) p {
+    max-width: 1000px;
+    text-align: center;
+    margin-bottom: 50px;
+  }
 
-        form {
-          .addgap {
-            flex-direction: column;
-            gap: 1em;
+  .container {
+    // max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    // padding: 20px;
+    // background-color: #f9f9f9;
+    // border-radius: 8px;
+    // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    .addgap {
+      display: grid;
+
+      .forms {
+        display: grid;
+        border-top: 1px solid black;
+        padding: 1em;
+
+        label {
+          display: flex;
+          align-items: center;
+          font-size: 32px;
+          margin-bottom: .5em;
+          color: #333;
+
+          span {
+            display: inline-block;
+            font-size: 16px;
+            margin-right: 0.5em;
+            color: #8E8383;
+            width: 2em;
           }
 
-          .forms {
-            width: 100%;
-          }
-
-          textarea {
-            margin-top: .5rem;
+          @media (max-width: 768px) {
+            font-size: 16px;
           }
         }
-      }
 
-      img {
-        max-width: 80%;
-        margin: 0 auto;
-        display: block;
+        .input {
+          padding: .6em .6em .6em 1em;
+          margin: 10px 0 10px 0;
+          display: inline-block;
+          margin-left: 3em;
+          max-width: 600px;
+          border: none;
+        }
+
+        textarea {
+          padding: 0.8em 1em;
+          border-radius: 8px;
+          max-width: 600px;
+          margin-left: 3em;
+        }
+
+        textarea {
+          resize: vertical;
+        }
+      }
+    }
+
+    @media (min-width: 820px) and (max-width:1024) {
+      .button_center {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
   }

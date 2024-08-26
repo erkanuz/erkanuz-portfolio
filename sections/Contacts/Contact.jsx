@@ -7,6 +7,17 @@ import { useRouter } from 'next/navigation'
 import { Text } from '@/components/Text';
 import { SendButton } from '@/components';
 
+const fieldInfo = {
+  fullname: {
+    label: 'What’s your name ?',
+    placeholder: 'John Doe *'
+  },
+  email: {
+    label: 'What’s your email ?',
+    placeholder: 'example@example.com *'
+  }
+};
+
 export const Contact = () => {
   const [formData, setFormData] = useState({
     fullname: '',
@@ -63,61 +74,76 @@ export const Contact = () => {
 
   return (
     <div className={styles.contact} id="contacts">
-         <div>
-              <h1 className={styles.contact_title}>Contact Me /</h1>
-         </div>
+      <div>
+        <h1 className={styles.contact_title}>Contact Me /</h1>
+      </div>
+
+      <div>
+        <h2 data-target="target">Let’s Connect! </h2>
+        <p data-target="target">As a freelance web developer, I have a growing understanding of front-end technologies like React and Next.js. I'm dedicated to building user-friendly and scalable web applications while continually expanding my skills and knowledge.</p>
+      </div>
 
       <div className={styles.container}>
-           <div>
-                <h3 className={styles.con_tit}>Let's talk !</h3>
-                <p className={styles.paragrah}>Fill out the form and l'll get back to you shortly.</p>
-                <img src="/images/office.svg" alt="" className={styles.img} />
-           </div>
+        <form onSubmit={handleSubmit}>
+          <div className={styles.addgap}>
+            {['fullname', 'email'].map((field, index) => (
+              <div key={field} className={styles.forms}>
+                <label htmlFor={field}>
+                  <span className={styles.counter}>{String(index + 1).padStart(2, '0')}</span>
+                  {fieldInfo[field].label}
+                </label>
+                <input
+                  name={field}
+                  onChange={handleInputChange}
+                  value={formData[field]}
+                  type={field === 'email' ? 'email' : 'text'}
+                  placeholder={fieldInfo[field].placeholder}
+                  maxLength={40}
+                  className={styles.input}
+                  required
+                />
+                <span className={styles.inputborder}></span>
+              </div>
+            ))}
 
-           <div className={styles.anim_form}>
-               <form onSubmit={handleSubmit}>
-                     <div className={styles.addgap}>
-                       {['fullname', 'email'].map((field) => (
-                         <div key={field} className={styles.forms}>
-                              <input
-                                name={field}
-                                onChange={handleInputChange}
-                                value={formData[field]}
-                                type={field === 'email' ? 'email' : 'text'}
-                                placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
-                                className={styles.input}
-                                required
-                              />
-                              <span className={styles.inputborder}></span>
-                         </div>
-                       ))}
-                     </div>
+            <div className={styles.forms}>
+              <label htmlFor="subject">
+                <span className={styles.counter}>03</span>
+                What’s specific area or task do you need help ?
+              </label>
+              <input
+                name="subject"
+                onChange={handleInputChange}
+                value={formData.subject}
+                type="text"
+                placeholder="Can you help me to build full working Sass project using Next.js  *"
+                className={styles.input}
+                required
+              />
+              <span className={styles.inputborder}></span>
+            </div>
 
-                     <div className={styles.forms}>
-                         <input
-                           name="subject"
-                           onChange={handleInputChange}
-                           value={formData.subject}
-                           type="text"
-                           placeholder="Subject"
-                           className={styles.input}
-                           required
-                         />
-                         <span className={styles.inputborder}></span>
-                     </div>   
+            <div className={styles.forms}>
+              <label htmlFor="text">
+                <span className={styles.counter}>04</span>
+                Your Message !
+              </label>
+              <textarea
+                id="text"
+                name="text"
+                onChange={handleInputChange}
+                value={formData.text}
+                cols="30"
+                rows="10" placeholder='Please provide any additional details or specific requests you have for this project *'
+              ></textarea>
+            </div>
+          </div>
 
-                     <textarea
-                        name="text"
-                        onChange={handleInputChange}
-                        value={formData.text}
-                        cols="30"
-                        rows="10"
-                     ></textarea>   
+          <div className={styles.button_center}>
+            <SendButton />
+          </div>
 
-                     <SendButton />
-                     
-               </form>
-           </div>
+        </form>
       </div>
 
       <Text />
