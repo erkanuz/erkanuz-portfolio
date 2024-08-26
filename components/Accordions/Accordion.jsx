@@ -1,6 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
-import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
-import styles from './Accordion.module.scss';
+import { useState, useEffect, useRef } from "react";
+import styles from "./Accordion.module.scss";
 
 export const Accordion = ({ context }) => {
   const [accordion, setAccordion] = useState();
@@ -21,10 +20,10 @@ export const Accordion = ({ context }) => {
   };
 
   useEffect(() => {
-    document.body.addEventListener('click', closeAccordionOnOutsideClick);
+    document.body.addEventListener("click", closeAccordionOnOutsideClick);
 
     return () => {
-      document.body.removeEventListener('click', closeAccordionOnOutsideClick);
+      document.body.removeEventListener("click", closeAccordionOnOutsideClick);
     };
   }, []);
 
@@ -34,9 +33,46 @@ export const Accordion = ({ context }) => {
         <div className={styles.first_info} key={index}>
           <div className={styles.title} onClick={() => accordionToggle(index)}>
             {element.title}
-            <span>{accordion === index ? <MdKeyboardArrowDown size={20} /> : <MdKeyboardArrowUp size={20} />}</span>
+            <span>
+              {accordion === index ? (
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4 14L12 6L20 14"
+                    stroke="black"
+                    strokeWidth="2"
+                    fill="none"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4 10L12 18L20 10"
+                    stroke="black"
+                    strokeWidth="2"
+                    fill="none"
+                  />
+                </svg>
+              )}
+            </span>
           </div>
-          <p className={`${styles.description} ${accordion === index ? styles.open : ''}`}>{element.description}</p>
+          <p
+            className={`${styles.description} ${accordion === index ? styles.open : ""
+              }`}
+          >
+            {element.description}
+          </p>
         </div>
       ))}
     </div>
