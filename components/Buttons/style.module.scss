@@ -11,23 +11,25 @@
         display: inline-block;
         cursor: none;
         transform: skew(40deg);
-    
+
         a {
             display: block;
             text-decoration: none;
             transform: skew(-40deg);
-    
+
             span {
                 position: relative;
                 z-index: 10;
                 transition: color .4s;
                 color: white;
                 display: block;
-                transform: skew(0deg); /* No skew */
+                transform: skew(0deg);
+                /* No skew */
             }
         }
-    
-        &::before, &::after {
+
+        &::before,
+        &::after {
             position: absolute;
             top: 0;
             left: 0;
@@ -35,7 +37,7 @@
             height: 100%;
             z-index: 0;
         }
-    
+
         &::before {
             content: "";
             background: #000;
@@ -43,11 +45,11 @@
             left: -10%;
             transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
         }
-    
+
         &:hover span {
             color: black;
         }
-    
+
         &:hover::before {
             transform: translate3d(100%, 0, 0);
         }
@@ -85,33 +87,83 @@
 
 // SendButton
 .send {
-    display: inline-flex;
-    justify-self: flex-end;
-    button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: .467em;
-        padding: .5rem 2.25rem;
-        font-size: 1.1em;
-        cursor: none;
-        background-color: #171717;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 169px;
+    height: 60px;
+    background-color: #000;
+    color: #fff;
+    text-transform: uppercase;
+    border: 3px solid #fff;
+    outline: 3px solid #000;
+    box-shadow: 6px 6px 0 #00a4ef;
+    transition: all 0.1s ease-out;
+    padding: 0 15px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    margin-left: 20px;
+    margin-bottom: 20px;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg,
+                transparent,
+                rgba(255, 255, 255, .8),
+                transparent);
+        z-index: 1;
+        transition: none;
+        opacity: 0;
+    }
+
+    &:hover {
+        transform: translate(-4px, -4px);
+        box-shadow: 10px 10px 0 #000;
+        background-color: #000;
         color: #fff;
-        border: none;
-        border-radius: 5px;
-        transition: all .4s;
-        text-transform: uppercase;
-        font-style: italic;
 
-        &:hover {
-          box-shadow: 0 7px 0 -2px #cbd5e1, 0 15px 0 -4px #39a3db, 0 16px 10px -3px #39a2db;
-          transition: all 0.7s;
-        }
-
-        i {
-            color: greenyellow;
+        &::before {
+            opacity: 1;
+            animation: slide 2s infinite;
         }
     }
+
+    &:active {
+        transform: translate(4px, 4px);
+        box-shadow: 0px 0px 0 #00a4ef;
+        background-color: #fff;
+        color: #000;
+        border-color: #000;
+    }
+
+    @media (max-width: 820px) {
+        margin-left: 0px;
+    }
+}
+
+@keyframes slide {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+.button_text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    transition: transform 0.2s ease-out;
+    position: relative;
+    z-index: 1;
 }
 
 // MEDIA QUERIES
@@ -122,14 +174,18 @@
             display: none;
         }
     }
+
     .cn {
         display: none;
     }
 }
 
-@media screen and (max-width: 912px) {
+@media (max-width: 820px) {
     .send {
-        justify-self: center;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         margin-top: 1em;
     }
 }
