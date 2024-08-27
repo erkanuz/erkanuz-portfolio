@@ -3,7 +3,13 @@ import Projects from "@/models/projects";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-    await connectMongoDB();
-    const projects = await Projects.find();
-    return NextResponse.json({ projects });
+    try {
+        await connectMongoDB();
+        const projects = await Projects.find();
+        // console.log('Fetched Projects:', projects); debugging
+        return NextResponse.json({ projects });
+    } catch (error) {
+        console.error('Error fetching projects:', error);
+        return NextResponse.json({ error: 'Failed to fetch projects' }, { status: 500 });
+    }
 }
