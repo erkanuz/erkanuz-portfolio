@@ -7,6 +7,10 @@ import { useRouter } from 'next/navigation'
 import { Text } from '@/components/Text';
 import { SendButton } from '@/components';
 
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
+import { useGSAP } from '@gsap/react';
+
 const fieldInfo = {
   fullname: {
     label: 'What’s your name ?',
@@ -72,6 +76,27 @@ export const Contact = () => {
     }
   };
 
+  gsap.registerPlugin(ScrollTrigger);
+
+  useGSAP(() => {
+    gsap.from('.titleL', {
+      opacity: 0,
+      x: 300,
+      duration: 2,
+      scrollTrigger: {
+        trigger: '.titleL'
+      }
+    })
+    gsap.from('.DescR', {
+      opacity: 0,
+      x: -300,
+      duration: 2,
+      scrollTrigger: {
+        trigger: '.DescR'
+      }
+    })
+  })
+
   return (
     <div className={styles.contact} id="contacts">
       <div>
@@ -79,8 +104,8 @@ export const Contact = () => {
       </div>
 
       <div>
-        <h2 data-target="target">Let’s Connect! </h2>
-        <p data-target="target">As a freelance web developer, I have a growing understanding of front-end technologies like React and Next.js. I'm dedicated to building user-friendly and scalable web applications while continually expanding my skills and knowledge.</p>
+        <h2 className='titleL' data-target="target">Let’s Connect! </h2>
+        <p className='DescR' data-target="target">As a freelance web developer, I have a growing understanding of front-end technologies like React and Next.js. I'm dedicated to building user-friendly and scalable web applications while continually expanding my skills and knowledge.</p>
       </div>
 
       <div className={styles.container}>

@@ -4,9 +4,13 @@ import styles from './style.module.scss'
 import Marquee from "react-fast-marquee";
 import { Accordion } from '@/components/Accordions';
 
-import React, { Suspense } from 'react';
 import SplineX from '@/components/Spline/Spline';
 
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
+import { useGSAP } from '@gsap/react';
+
+import React, { Suspense, useRef } from 'react';
 const Spline = React.lazy(() => import('@splinetool/react-spline'));
 
 const context = [
@@ -39,6 +43,29 @@ const iconData = [
 ];
 
 export const Skills = () => {
+    const container = useRef();
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    useGSAP(() => {
+        gsap.from('.left', {
+            opacity: 0,
+            x: 300,
+            duration: 2,
+            scrollTrigger: {
+                trigger: '.left'
+            }
+        })
+        gsap.from('.right', {
+            opacity: 0,
+            x: -300,
+            duration: 2,
+            scrollTrigger: {
+                trigger: '.right'
+            }
+        })
+    })
+
     return (
         <div className={styles.skills}>
             <div>
@@ -59,10 +86,10 @@ export const Skills = () => {
                 </Marquee>
             </div>
 
-            <div className={styles.skills_content}>
+            <div className={styles.skills_content} ref={container}>
                 <Accordion context={context} />
 
-                <div className={styles.images_container}>
+                <div className={`${styles.images_container} right`}>
                     <div className={styles.splineX}>
                         <Suspense fallback={<div>Loading...</div>}>
                             <SplineX />

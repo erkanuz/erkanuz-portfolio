@@ -1,10 +1,14 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styles from "./style.module.scss";
 
 import { projects } from "@/app/api/data";
 
 import { CustomeModal, Elementi } from "@/components";
+
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+import { useGSAP } from "@gsap/react";
 
 export const Projects = () => {
   const [modal, setModal] = useState({ acive: false, index: 0 });
@@ -25,9 +29,24 @@ export const Projects = () => {
   const handleHover = (index) =>
     setModal({ active: true, index }) || setBackgroundColor(getRandomColor());
 
+  const container = useRef();
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  useGSAP(() => {
+    gsap.from('.proj_content', {
+      opacity: 0,
+      y: 300,
+      duration: 2,
+      scrollTrigger: {
+        trigger: '.proj_content'
+      }
+    })
+  })
+
   return (
-    <section className={styles.proj_base}>
-      <div className={styles.proj_content}>
+    <section className={styles.proj_base} ref={container}>
+      <div className={`${styles.proj_content} proj_content`}>
         <h2 className={styles.proj_title}>
           @My favourite 4 <br /> projects !
         </h2>

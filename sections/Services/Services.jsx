@@ -1,10 +1,14 @@
 'use client';
 
-import React from 'react'
+import React, { useRef } from 'react'
 import styles from './style.module.scss'
 
 import { useModal } from '@/hooks';
 import { ServiceModal } from '@/components';
+
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
+import { useGSAP } from '@gsap/react';
 
 export const Services = () => {
   const { isOpen, openModal, closeModal, content } = useModal();
@@ -30,17 +34,40 @@ export const Services = () => {
     openModal(modalContent[service]);
   };
 
+  const container = useRef();
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  useGSAP(() => {
+    gsap.from('.first', {
+      opacity: 0,
+      x: 300,
+      duration: 2,
+      scrollTrigger: {
+        trigger: '.first'
+      }
+    })
+    gsap.from('.second', {
+      opacity: 0,
+      x: -300,
+      duration: 2,
+      scrollTrigger: {
+        trigger: '.second'
+      }
+    })
+  })
+
   return (
-    <div className={styles.services}>
+    <div className={styles.services} ref={container}>
       <div>
         <h1 className={styles.service_title}>SERVICES /</h1>
       </div>
 
       <div className={styles.gridContainer}>
-        <div onClick={() => handleOpenModal('WEB DEVELOPMENT')}>
+        <div className='first' onClick={() => handleOpenModal('WEB DEVELOPMENT')}>
           <h2>WEB DEVELOPMENT</h2>
         </div>
-        <div onClick={() => handleOpenModal('WEB DESIGN')}>
+        <div className='second' onClick={() => handleOpenModal('WEB DESIGN')}>
           <h2>WEB DESIGN</h2>
         </div>
       </div>

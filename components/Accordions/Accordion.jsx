@@ -28,7 +28,7 @@ export const Accordion = ({ context }) => {
   }, []);
 
   return (
-    <div className={styles.accordion_wrapper} ref={accordionRef}>
+    <div className={`${styles.accordion_wrapper} left`} ref={accordionRef}>
       {context.map((element, index) => (
         <div className={styles.first_info} key={index}>
           <div className={styles.title} onClick={() => accordionToggle(index)}>

@@ -1,15 +1,17 @@
 'use client';
-import React from 'react'
+import React, { useRef } from "react";
 import styles from './style.module.scss'
 
 import Link from 'next/link'
 import { AnimatedText, MagneticIcon } from '@/components';
-import { Dancing_Script } from 'next/font/google';
+
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const SocialLink = ({ href, icon }) => (
   <Link href={href}>
     <MagneticIcon>
-      <i>{icon}</i>
+      <i className="socialLink">{icon}</i>
     </MagneticIcon>
   </Link>
 );
@@ -23,11 +25,26 @@ export const Hero = () => {
     });
   };
 
+  const container = useRef();
+  const tl = useRef();
+
+  useGSAP(() => {
+    gsap.set([".mainT", ".mainDescription"], { xPercent: 150, opacity: 0 });
+    gsap.set(".centerContent", { yPercent: -150, opacity: 0 });
+    gsap.set(".socialLink", { xPercent: 20, opacity: 0 });
+
+    tl.current = gsap
+      .timeline({ defaults: { duration: 2, ease: 'power4.inOut' } })
+      .to(['.mainT', '.mainDescription'], { xPercent: 0, opacity: 1, stagger: { each: .9, grid: 'auto', from: 'edges' } })
+      .to('.centerContent', { yPercent: 0, opacity: 1 })
+      .to('.socialLink', { xPercent: 0, opacity: 1, stagger: { each: 0.09, grid: 'auto', from: 'random' } })
+  }, { scope: container });
+
   return (
     <div className={styles.wrapper}>
-      <main className={styles.main_hero}>
+      <main className={styles.main_hero} ref={container}>
 
-        <div className={styles.mainTitle}>
+        <div className={`${styles.mainTitle} mainT`}>
           <span data-target="target" className={styles.limit}>Erkan</span>
           <div>
             <span data-target="target">Uzunhalil</span>
@@ -35,16 +52,18 @@ export const Hero = () => {
           </div>
         </div>
 
-        <div className={styles.mainDescription}>
-          <AnimatedText />
+        <div className="mainDescription">
+          <div className={styles.mainDescription}>
+            <AnimatedText />
+          </div>
+          <p className={styles.mainDescription}>
+            I will do my best to do something that will improve your brand and
+            tell your story not- <br /> mine.
+          </p>
         </div>
-        <p className={styles.mainDescription}>
-          I will do my best to do something that will improve your brand and
-          tell your story not- <br /> mine.
-        </p>
 
         <div className={styles.mainContent}>
-          <div className={styles.centerContent}>
+          <div className={`${styles.centerContent} centerContent`}>
             <p>Web Developer</p>
 
             <div className={styles.cardBox}>

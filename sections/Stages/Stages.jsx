@@ -1,17 +1,42 @@
-import React from 'react'
+'use client';
+import React, { useRef } from 'react'
 
 import styles from './style.module.scss'
 
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
+import { useGSAP } from '@gsap/react';
+
 export const Stages = () => {
 
+    const container = useRef();
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    useGSAP(() => {
+        gsap.from('.stagges', {
+            opacity: 0,
+            x: 200,
+            duration: 2,
+            stagger: {
+                each: 0.07,
+                grid: 'auto',
+                from: 'start'
+            },
+            scrollTrigger: {
+                trigger: '.stagges',
+            }
+        })
+    })
+
     return (
-        <div className={styles.stages}>
+        <div className={styles.stages} ref={container}>
             <div className={styles.boxes}>
                 <div className={styles.fimini}>
                     <h1 className={styles.stage_title}>stages of work /</h1>
                 </div>
             </div>
-            <div className={styles.boxes}>
+            <div className={`${styles.boxes} stagges`}>
                 <div className={styles.fimini}>
                     <div data-target="target">Research</div>
                     <div>/02</div>
@@ -21,7 +46,7 @@ export const Stages = () => {
                     <span>Conducting in-depth research, including competitive and visual analysis, to inform design decisions and establish a solid foundation for the project.</span>
                 </div>
             </div>
-            <div className={styles.boxes}>
+            <div className={`${styles.boxes} stagges`}>
                 <div className={styles.fimini}>
                     <div data-target="target">Prototyping</div>
                     <div>/03</div>
@@ -32,7 +57,7 @@ export const Stages = () => {
                 </div>
             </div>
 
-            <div className={styles.boxes}>
+            <div className={`${styles.boxes} stagges`}>
                 <div className={styles.fimini}>
                     <div data-target="target">Briefing</div>
                     <div>/04</div>
@@ -42,7 +67,7 @@ export const Stages = () => {
                     <span>Meeting with the client to gather project requirements and expectations.</span>
                 </div>
             </div>
-            <div className={styles.boxes}>
+            <div className={`${styles.boxes} stagges`}>
                 <div className={styles.fimini}>
                     <div data-target="target">Design</div>
                     <div>/05</div>
@@ -53,7 +78,7 @@ export const Stages = () => {
                 </div>
             </div>
 
-            <div className={styles.boxes}>
+            <div className={`${styles.boxes} stagges`}>
                 <div className={styles.fimini}>
                     <div data-target="target">Finalization</div>
                     <div>/06</div>

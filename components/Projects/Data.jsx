@@ -40,7 +40,7 @@ export const Data = async () => {
 
             <div className={styles.projects__data}>
               <span>{element.description}</span>
-              <h2>{element.title}</h2>
+              <h2 data-target="target">{element.title}</h2>
               <p>
                 <a href={element.url} className={styles.projects__button}>Read more <IoLogoGithub /></a>
                 <a href={element.link} className={styles.projects__button}> Website <FiLink /></a>
