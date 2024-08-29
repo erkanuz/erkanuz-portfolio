@@ -73,14 +73,26 @@
           display: inline-block;
           margin-left: 3em;
           max-width: 600px;
-          border: none;
+          border: 1.5px solid black;
+          box-shadow: 2.5px 3px 0 black;
+          transition: ease-in-out .25s;
+
+          &:focus {
+            box-shadow: 5.5px 7px 0 black;
+          }
         }
 
         textarea {
           padding: 0.8em 1em;
-          border-radius: 8px;
           max-width: 600px;
           margin-left: 3em;
+          border: 1.5px solid black;
+          box-shadow: 2.5px 3px 0 black;
+          transition: ease-in-out .25s;
+
+          &:focus {
+            box-shadow: 5.5px 7px 0 black;
+          }
         }
 
         textarea {
