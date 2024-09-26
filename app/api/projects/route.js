@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
     try {
         await connectMongoDB();
-        const projects = await Projects.find();
+        const projects = await Projects.find().sort({ number: 1 });
         // console.log('Fetched Projects:', projects); debugging
         return NextResponse.json({ projects });
     } catch (error) {
