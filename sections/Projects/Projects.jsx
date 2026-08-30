@@ -2,6 +2,8 @@
 import React, { useState, useRef } from "react";
 import styles from "./style.module.scss";
 
+import Link from "next/link";
+
 import { projects } from "@/app/api/data";
 
 import { CustomeModal, Elementi } from "@/components";
@@ -47,16 +49,18 @@ export const Projects = () => {
   return (
     <section className={styles.proj_base} ref={container}>
       <div className={`${styles.proj_content} proj_content`}>
-        <h2 className={styles.proj_title}>
-          @My favourite 4 <br /> projects !
-        </h2>
-        <p className={styles.proj_subtitle}>
-          I’ll do my best to deliver solutions that fit your needs and support
-          your brand’s story. I’ll work closely with you to understand your vision
-          and ensure my work supports your goals. My focus is on providing
-          high-quality results that help tell your story and contribute to your
-          success.
-        </p>
+        <div className={styles.proj_heading}>
+          <div className={styles.proj_heading_left}>
+            <span className={styles.proj_label}>SELECTED PROJECTS</span>
+
+            <span className={styles.proj_line}></span>
+          </div>
+
+          <Link href="/projects" className={styles.proj_link}>
+            <span>View all projects</span>
+            <span className={styles.proj_arrow}> → </span>
+          </Link>
+        </div>
       </div>
 
       <div className={styles.mainBox}>
@@ -68,6 +72,7 @@ export const Projects = () => {
                 index={index}
                 name={project.name}
                 date={project.date}
+                count={project.count}
                 desc_title={project.desc_title}
                 description={project.description}
                 link={project.link}
@@ -82,13 +87,15 @@ export const Projects = () => {
           )}
         </div>
       </div>
-      {modal.active && (
-        <CustomeModal
-          modal={modal}
-          projects={projects}
-          backgroundColor={backgroundColor}
-        />
-      )}
-    </section>
+      {
+        modal.active && (
+          <CustomeModal
+            modal={modal}
+            projects={projects}
+            backgroundColor={backgroundColor}
+          />
+        )
+      }
+    </section >
   );
 };

@@ -1,0 +1,789 @@
+/*
+ * ========================================
+ * HOW I WORK
+ * ========================================
+ */
+
+.howIWork {
+  width: 100%;
+  padding: 6rem 0;
+
+  background: #fff;
+
+  .container {
+    width: 80%;
+
+    display: flex;
+    flex-direction: column;
+
+    margin: 0 auto;
+
+    .intro {
+      padding: 5px 0;
+
+      .heading {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        margin-bottom: 1.7rem;
+
+        .eyebrow {
+          font-style: italic;
+
+          font-size: 16px;
+          font-weight: 500;
+
+          letter-spacing: -0.02em;
+          line-height: 1;
+
+          padding-bottom: 8px;
+
+          color: #111;
+        }
+
+        .headingLine {
+          display: block;
+
+          width: 26px;
+          height: 3px;
+
+          background-color: #5138ee;
+        }
+      }
+
+      h2 {
+        margin: 0 0 1.6rem;
+
+        font-size: 29px;
+        line-height: 1.08;
+
+        font-weight: 400;
+
+        letter-spacing: -0.045em;
+
+        color: #111;
+      }
+
+      p {
+        max-width: 225px;
+
+        font-size: 12px;
+        line-height: 1.65;
+
+        color: #555;
+      }
+    }
+
+    /*
+     * ========================================
+     * MAIN LAYOUT
+     * ========================================
+     */
+
+    .layout {
+      position: relative;
+
+      width: 100%;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(100px, 0.8fr)
+        minmax(500px, 2.4fr)
+        minmax(100px, 0.8fr);
+
+      column-gap: 25px;
+
+      min-height: 500px;
+
+      margin-top: 5px;
+
+      align-items: stretch;
+
+      /*
+       * ========================================
+       * DECORATIVE SIDE COLUMNS
+       * ========================================
+       */
+
+      > div:first-child,
+      > div:last-child {
+        position: relative;
+
+        width: 100%;
+        height: 100%;
+
+        font-size: 0;
+      }
+
+      > div:first-child {
+        &::after {
+          position: absolute;
+
+          content: "";
+
+          width: 100px;
+          height: 100px;
+
+          left: 0;
+          bottom: 0;
+
+          background-image: radial-gradient(
+            #4f5b6b 1.7px,
+            transparent 1.7px
+          );
+
+          background-size: 12px 12px;
+
+          opacity: 0.9;
+
+          pointer-events: none;
+        }
+      }
+
+      > div:last-child {
+        &::after {
+          position: absolute;
+
+          content: "";
+
+          width: 100px;
+          height: 100px;
+
+          top: 0;
+          right: 0;
+
+          background-image: radial-gradient(
+            #4f5b6b 1.7px,
+            transparent 1.7px
+          );
+
+          background-size: 12px 12px;
+
+          opacity: 0.9;
+
+          pointer-events: none;
+        }
+      }
+
+      /*
+       * ========================================
+       * CENTER CONTENT
+       * ========================================
+       */
+
+      .body_of_div {
+        width: 100%;
+        min-width: 0;
+
+        display: grid;
+
+        grid-template-rows:
+          auto
+          auto
+          auto;
+
+        row-gap: 15px;
+
+        align-items: center;
+
+        /*
+         * ========================================
+         * TOP STEPS
+         * ========================================
+         */
+
+        .top_steps {
+          width: 100%;
+
+          display: grid;
+
+          grid-template-columns: 155px 155px;
+
+          justify-content: space-between;
+
+          align-items: start;
+
+          .step {
+            &:first-child {
+              justify-self: start;
+            }
+
+            &:last-child {
+              justify-self: end;
+            }
+          }
+        }
+
+        /*
+         * ========================================
+         * MIDDLE STEP
+         * ========================================
+         */
+
+        .middle_step {
+          width: 100%;
+
+          display: flex;
+
+          justify-content: center;
+          align-items: center;
+
+          padding: 5px 0;
+
+          .step {
+            width: 155px;
+          }
+        }
+
+        /*
+         * ========================================
+         * BOTTOM STEPS
+         * ========================================
+         */
+
+        .bottom_steps {
+          width: 100%;
+
+          display: grid;
+
+          grid-template-columns: 155px 155px;
+
+          justify-content: space-between;
+
+          align-items: start;
+
+          .step {
+            &:first-child {
+              justify-self: start;
+            }
+
+            &:last-child {
+              justify-self: end;
+            }
+          }
+        }
+
+        /*
+         * ========================================
+         * STEP
+         * ========================================
+         */
+
+        .step {
+          width: 100%;
+
+          display: flex;
+          flex-direction: column;
+
+          align-items: flex-start;
+
+          min-width: 0;
+
+          /*
+           * ========================================
+           * STEP HEADER
+           * ========================================
+           */
+
+          .stepHeader {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            min-height: 26px;
+
+            margin-bottom: 5px;
+
+            .number {
+              display: inline-block;
+
+              font-size: 21px;
+              line-height: 1;
+
+              font-weight: 400;
+
+              letter-spacing: -0.04em;
+
+              color: #5138ee;
+            }
+
+            .stepIcon {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              width: 20px;
+              height: 20px;
+
+              font-size: 20px;
+
+              color: black;
+
+              svg {
+                width: 20px;
+                height: 20px;
+              }
+            }
+          }
+
+          /*
+           * ========================================
+           * STEP CONTENT
+           * ========================================
+           */
+
+          .stepContent {
+            width: 155px;
+
+            margin: 0;
+
+            h3 {
+              margin: 0 0 8px;
+
+              font-size: 14px;
+              line-height: 1.2;
+
+              font-weight: 600;
+
+              letter-spacing: -0.02em;
+
+              color: #111;
+            }
+
+            p {
+              width: 155px;
+
+              margin: 0;
+
+              font-size: 11.5px;
+              line-height: 1.5;
+
+              font-weight: 400;
+
+              color: #555;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/*
+ * ========================================
+ * LARGE TABLET
+ * ========================================
+ */
+
+@media (max-width: 1200px) {
+  .howIWork {
+    .container {
+      width: 86%;
+
+      .intro {
+        h2 {
+          font-size: 28px;
+        }
+
+        p {
+          max-width: 215px;
+
+          font-size: 12px;
+        }
+      }
+
+      .layout {
+        grid-template-columns:
+          minmax(80px, 0.6fr)
+          minmax(420px, 2.8fr)
+          minmax(80px, 0.6fr);
+
+        column-gap: 20px;
+
+        min-height: 470px;
+
+        > div:first-child,
+        > div:last-child {
+          &::after {
+            width: 55px;
+            height: 55px;
+
+            background-size: 11px 11px;
+          }
+        }
+
+        .body_of_div {
+          .top_steps,
+          .bottom_steps {
+            column-gap: 55px;
+          }
+
+          .step {
+            .stepContent {
+              width: 145px;
+
+              h3 {
+                font-size: 14px;
+              }
+
+              p {
+                width: 145px;
+
+                font-size: 11px;
+              }
+            }
+
+            .stepHeader {
+              .number {
+                font-size: 20px;
+              }
+
+              .stepIcon {
+                font-size: 17px;
+
+                svg {
+                  width: 17px;
+                  height: 17px;
+                }
+              }
+            }
+          }
+
+          .middle_step {
+            .step {
+              width: 145px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/*
+ * ========================================
+ * TABLET
+ * ========================================
+ */
+
+@media (max-width: 900px) {
+  .howIWork {
+    padding: 5rem 0;
+
+    .container {
+      width: 88%;
+
+      .intro {
+        h2 {
+          font-size: 26px;
+        }
+
+        p {
+          max-width: 200px;
+
+          font-size: 11.5px;
+        }
+      }
+
+      .layout {
+        grid-template-columns:
+          minmax(60px, 0.5fr)
+          minmax(360px, 3fr)
+          minmax(60px, 0.5fr);
+
+        column-gap: 15px;
+
+        min-height: 440px;
+
+        margin-top: 30px;
+
+        .body_of_div {
+          .top_steps,
+          .bottom_steps {
+            column-gap: 35px;
+          }
+
+          .step {
+            .stepContent {
+              width: 125px;
+
+              h3 {
+                font-size: 13px;
+              }
+
+              p {
+                width: 125px;
+
+                font-size: 10.5px;
+                line-height: 1.45;
+              }
+            }
+
+            .stepHeader {
+              gap: 9px;
+
+              .number {
+                font-size: 19px;
+              }
+
+              .stepIcon {
+                width: 18px;
+                height: 18px;
+
+                svg {
+                  width: 16px;
+                  height: 16px;
+                }
+              }
+            }
+          }
+
+          .middle_step {
+            .step {
+              width: 125px;
+            }
+          }
+        }
+
+        > div:first-child,
+        > div:last-child {
+          &::after {
+            width: 48px;
+            height: 48px;
+
+            background-size: 10px 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/*
+ * ========================================
+ * MOBILE
+ * ========================================
+ */
+
+@media (max-width: 768px) {
+  .howIWork {
+    padding: 4.5rem 0;
+
+    .container {
+      width: 90%;
+
+      .intro {
+        padding: 0;
+
+        .heading {
+          margin-bottom: 1.5rem;
+        }
+
+        .eyebrow {
+          font-size: 14px;
+        }
+
+        h2 {
+          font-size: 28px;
+
+          margin-bottom: 1.5rem;
+        }
+
+        p {
+          max-width: 500px;
+
+          font-size: 13px;
+          line-height: 1.6;
+        }
+      }
+
+      .layout {
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+
+        min-height: 0;
+
+        margin-top: 40px;
+
+        gap: 0;
+
+        > div:first-child,
+        > div:last-child {
+          display: none;
+        }
+
+        .body_of_div {
+          width: 100%;
+
+          display: flex;
+          flex-direction: column;
+
+          gap: 0;
+
+          .top_steps {
+            display: grid;
+
+            grid-template-columns: 1fr;
+
+            row-gap: 35px;
+
+            width: 100%;
+
+            .step {
+              &:first-child,
+              &:last-child {
+                justify-self: start;
+              }
+            }
+          }
+
+          .middle_step {
+            display: block;
+
+            width: 100%;
+
+            padding: 35px 0;
+
+            .step {
+              width: 100%;
+            }
+          }
+
+          .bottom_steps {
+            display: grid;
+
+            grid-template-columns: 1fr;
+
+            row-gap: 35px;
+
+            width: 100%;
+
+            .step {
+              &:first-child,
+              &:last-child {
+                justify-self: start;
+              }
+            }
+          }
+
+          .step {
+            width: 100%;
+
+            min-height: 0;
+
+            .stepHeader {
+              gap: 10px;
+
+              margin-bottom: 6px;
+
+              .number {
+                font-size: 20px;
+              }
+            }
+
+            .stepContent {
+              width: 100%;
+
+              h3 {
+                font-size: 16px;
+
+                margin-bottom: 7px;
+              }
+
+              p {
+                width: 100%;
+
+                max-width: 450px;
+
+                font-size: 12px;
+                line-height: 1.5;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/*
+ * ========================================
+ * SMALL MOBILE
+ * ========================================
+ */
+
+@media (max-width: 480px) {
+  .howIWork {
+    padding: 4rem 0;
+
+    .container {
+      width: 92%;
+
+      .intro {
+        h2 {
+          font-size: 25px;
+        }
+
+        p {
+          font-size: 12px;
+        }
+      }
+
+      .layout {
+        margin-top: 35px;
+
+        .body_of_div {
+          .top_steps,
+          .bottom_steps {
+            row-gap: 30px;
+          }
+
+          .middle_step {
+            padding: 30px 0;
+          }
+
+          .step {
+            .stepHeader {
+              gap: 8px;
+
+              .number {
+                font-size: 19px;
+              }
+
+              .stepIcon {
+                width: 18px;
+                height: 18px;
+
+                svg {
+                  width: 16px;
+                  height: 16px;
+                }
+              }
+            }
+
+            .stepContent {
+              h3 {
+                font-size: 15px;
+              }
+
+              p {
+                font-size: 11px;
+
+                line-height: 1.45;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

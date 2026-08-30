@@ -8,10 +8,14 @@ body {
   background-color: white;
   font-family: var(--font-inter);
   cursor: none;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 html {
   scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 img {

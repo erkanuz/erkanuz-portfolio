@@ -4,7 +4,6 @@ import styles from './style.module.scss'
 
 import { useRouter } from 'next/navigation'
 
-import { Text } from '@/components/Text';
 import { SendButton } from '@/components';
 
 import gsap from 'gsap';
@@ -99,13 +98,17 @@ export const Contact = () => {
 
   return (
     <div className={styles.contact} id="contacts">
-      <div>
-        <h1 className={styles.contact_title}>Contact Me /</h1>
+      <div className={styles.contact_heading}>
+        <span className={styles.contact_title}>LET'S CONTACT</span>
+
+        <span className={styles.contact_line}></span>
       </div>
 
-      <div>
-        <h2 className='titleL' data-target="target">Let’s Connect! </h2>
-        <p className='DescR' data-target="target">As a freelance web developer, I have a growing understanding of front-end technologies like React and Next.js. I'm dedicated to building user-friendly and scalable web applications while continually expanding my skills and knowledge.</p>
+      <div className={styles.contact_description}>
+        <p className={styles.contact_desc} data-target="target">
+          I'm always open to opportunities where I can combine technology, <br />
+          data and financial knowledge to solve meaningful problems.
+        </p>
       </div>
 
       <div className={styles.container}>
@@ -134,14 +137,14 @@ export const Contact = () => {
             <div className={styles.forms}>
               <label htmlFor="subject">
                 <span className={styles.counter}>03</span>
-                What’s specific area or task do you need help ?
+                What can I help you with?
               </label>
               <input
                 name="subject"
                 onChange={handleInputChange}
                 value={formData.subject}
                 type="text"
-                placeholder="Can you help me to build full working Sass project using Next.js  *"
+                placeholder="Tell me what you need help with. *"
                 className={styles.input}
                 required
               />
@@ -159,7 +162,7 @@ export const Contact = () => {
                 onChange={handleInputChange}
                 value={formData.text}
                 cols="30"
-                rows="10" placeholder='Please provide any additional details or specific requests you have for this project *'
+                rows="10" placeholder='Tell me a little about your project or request. *'
               ></textarea>
             </div>
           </div>
@@ -169,9 +172,16 @@ export const Contact = () => {
           </div>
 
         </form>
+
+        <div className={styles.imageWrapper}>
+          <img
+            src="/images/contact.svg"
+            alt="contact"
+            className={styles.contactImage}
+          />
+        </div>
       </div>
 
-      <Text />
     </div>
   );
 };

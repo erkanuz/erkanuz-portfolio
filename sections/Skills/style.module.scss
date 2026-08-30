@@ -1,25 +1,53 @@
-@import '@/components/Accordions/Accordion.module.scss';
-
 .skills {
   display: grid;
-  max-width: 2000px;
+  max-width: 80%;
   margin: 0 auto;
-  padding: 2rem 1rem 2rem 1rem;
   height: 100%;
 
-  @media (max-width: 1280px) {
-    height: 100%;
+  /*
+   * ========================================
+   * SECTION HEADING
+   * ========================================
+   */
+
+  .heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-bottom: 12px;
+
+    h2 {
+      margin: 0;
+
+      font-style: italic;
+      font-size: 16px;
+      font-weight: 500;
+
+      letter-spacing: -0.02em;
+
+      color: #111;
+
+      line-height: 1;
+    }
+
+    span {
+      display: block;
+
+      width: 26px;
+      height: 3px;
+
+      margin-top: 8px;
+
+      background-color: #5138ee;
+    }
   }
 
-  .stage_title {
-    text-transform: uppercase;
-    font-family: Inter;
-    font-size: 20px;
-    font-style: italic;
-    font-weight: 500;
-    line-height: normal;
-    display: inline-flex;
-  }
+  /*
+   * ========================================
+   * ICON MARQUEE
+   * ========================================
+   */
 
   .iconsContainer {
     width: 100%;
@@ -29,79 +57,306 @@
   .marquee {
     display: flex;
     align-items: center;
-    padding: 1rem;
+
+    padding: 1rem 0;
+
     max-width: 100%;
-    border-bottom: 1px solid;
-    border-top: 1px solid;
+
     margin-bottom: 20px;
 
     .iconWrapper {
+      width: 150px;
+      height: 120px;
+
+      flex-shrink: 0;
+
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      width: 150px;
-      height: 100%;
+
+      padding: 10px 8px;
+
+      margin-right: 10px;
+
+      border: 1px solid #eeeeee;
+      border-radius: 10px;
+
+      background: #ffffff;
+
+      box-sizing: border-box;
 
       .icon {
-        max-width: 100%;
-        height: auto;
+        width: 64px;
+        height: 64px;
+
+        object-fit: contain;
+
+        display: block;
+
+        margin-bottom: 9px;
+      }
+
+      .iconName {
+        width: 100%;
+
+        text-align: center;
+
+        font-size: 12px;
+        font-weight: 600;
+
+        line-height: 1.1;
+
+        color: #111111;
+
+        white-space: nowrap;
       }
     }
   }
 
-  .skills_content {
-    display: flex;
-    align-items: start;
-    justify-content: space-around;
+  /*
+   * ========================================
+   * ABOUT ME SECTION
+   * ========================================
+   */
 
-    .images_container {
-      display: grid;
-      place-items: center;
+  .aboutContainer {
+    display: grid;
+    grid-template-columns: minmax(260px, 420px) 1fr;
 
-      .splineX {
+    align-items: center;
+
+    gap: 40px;
+
+    padding: 36px 40px;
+
+    border-radius: 16px;
+
+    background-color: #f9fafb;
+
+    /*
+     * ========================================
+     * ILLUSTRATION
+     * ========================================
+     */
+
+    .illustration {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin: 20px 0 30px;
+
+      overflow: visible;
+
+
+      .aboutIllustration {
+        width: 100%;
+        max-width: 360px;
+
+        height: auto;
+
         display: block;
-        height: 500px;
-        width: 800px;
+      }
 
-        @media (max-width: 768px) {
-          width: auto;
+      .floatIcon {
+        transform-box: fill-box;
+        transform-origin: center center;
+
+        will-change: transform;
+      }
+    }
+
+    /*
+     * ========================================
+     * ABOUT TEXT
+     * ========================================
+     */
+
+    .aboutText {
+      max-width: 80%;
+
+      .aboutHeading {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        margin-bottom: 16px;
+
+        h3 {
+          margin: 0;
+
+          font-style: italic;
+          font-size: 22px;
+          font-weight: 700;
+
+          letter-spacing: -0.02em;
+
+          color: #111111;
+
+          line-height: 1;
+        }
+
+        span {
+          display: block;
+
+          width: 26px;
+          height: 3px;
+
+          margin-top: 8px;
+
+          background-color: #5138ee;
+        }
+      }
+
+      p {
+        margin: 0 0 14px;
+
+        font-size: 15px;
+        line-height: 1.6;
+
+        color: #4a4a4a;
+
+        &:last-of-type {
+          margin-bottom: 22px;
+        }
+      }
+
+      .readMore {
+        display: inline-flex;
+        align-items: center;
+
+        gap: 6px;
+
+        font-size: 14px;
+        font-weight: 700;
+
+        letter-spacing: 0.02em;
+
+        color: #5138ee;
+
+        text-decoration: none;
+
+        transition:
+          gap 0.2s ease,
+          opacity 0.2s ease;
+
+        .icon {
+          flex-shrink: 0;
+          font-size: 18px;
+
+          transition: transform 0.2s ease;
+        }
+
+        &:hover {
+          gap: 10px;
+          opacity: 0.85;
+
+          .icon {
+            transform: translateX(2px);
+          }
         }
       }
     }
   }
 
-  .accordion_wrapper {
-    @include accordionStyles;
-  }
-}
+  /*
+   * ========================================
+   * TABLET
+   * ========================================
+   */
 
-@media (max-width: 1025px) {
+  @media (max-width: 900px) {
 
-  .skills {
-    .skills_content {
-      display: grid;
-      align-items: center;
-      flex-direction: column;
-      gap: 1rem;
+    // padding: 1.5rem 0.75rem;
+    
+    .marquee {
+      padding: 0.75rem 0;
 
-      .images_container {
-        display: none;
+      .iconWrapper {
+        width: 110px;
+      }
+    }
+
+    .aboutContainer {
+      grid-template-columns: 1fr;
+
+      padding: 28px 24px;
+
+      gap: 24px;
+
+      text-align: center;
+
+      .illustration {
+        .aboutIllustration {
+          max-width: 260px;
+          margin: 0 auto;
+        }
+      }
+
+      .aboutText {
+        max-width: 100%;
+
+        .aboutHeading {
+          align-items: center;
+        }
+
+        .readMore {
+          justify-content: center;
+        }
       }
     }
   }
 
-  .skills .icons {
-    display: none;
-  }
-}
+  /*
+   * ========================================
+   * SMALL MOBILE
+   * ========================================
+   */
 
-@media (max-width: 1280px) {
+  @media (max-width: 480px) {
 
-  .skills {
-    .skills_content {
-      .images_container {
-        display: none;
+    // padding: 1rem 0.5rem;
+
+    .marquee {
+      padding: 0.75rem 0;
+
+      .iconWrapper {
+        width: 95px;
       }
     }
+  }
+
+  /*
+   * ========================================
+   * VERY SMALL PHONES
+   * ========================================
+   */
+
+  @media (max-width: 360px) {
+
+    // padding: 0.75rem 0.5rem;
+
+    .marquee {
+      .iconWrapper {
+        width: 80px;
+      }
+    }
+
+    .aboutContainer {
+      padding: 20px 16px;
+    }
+  }
+
+  /*
+   * ========================================
+   * EXISTING RESPONSIVE HEIGHT
+   * ========================================
+   */
+
+  @media (max-width: 1280px) {
+    height: 100%;
   }
 }

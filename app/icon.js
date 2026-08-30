@@ -1,4 +1,4 @@
-import { ImageResponse } from "next/server";
+import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const size = { width: 32, height: 32 };
@@ -20,7 +20,7 @@ export default function Icon() {
         }}
       >
         A
-      </div>
-    ),
+      </div>,
     { ...size }
+    );
 }

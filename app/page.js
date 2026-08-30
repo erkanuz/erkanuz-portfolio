@@ -3,7 +3,8 @@ import { useEffect, useState, useCallback } from 'react'
 import styles from './page.module.scss'
 
 import { Navbar, Cursor, Preloader, ScrollToTopButton } from '@/components/index'
-import { Hero, Projects, Stages, Skills, Contact, Footer, Paralax, Services } from '@/sections/index' 
+import { Hero, Projects, Skills, Footer, Paralax, Main, Education, Expertise, HowIWork, ContactMe } from '@/sections/index' 
+import { Text } from '@/components/Text';
 
 export default function Home() {
 
@@ -24,13 +25,15 @@ export default function Home() {
          {isLoading && <Preloader currentRoute="/" onComplete={preloaderComplete} />}
          <Cursor />
          <Navbar />
-         <Hero />
+         <Main />
+         <Education />
          <Projects />
          <Paralax />
-         <Services />
-         <Stages />
+         <HowIWork />
+         <Expertise />
          <Skills />
-         <Contact />
+         <ContactMe />
+         <Text />
          <ScrollToTopButton />
          <Footer />
     </main>

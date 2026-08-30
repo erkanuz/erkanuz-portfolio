@@ -25,7 +25,7 @@ export const SendButton = () => {
     return (
         <button className={styles.send} type="submit">
             <div className={styles.button_text}>
-                <span>send</span>
+                <span>send message</span>
             </div>
         </button>
     )

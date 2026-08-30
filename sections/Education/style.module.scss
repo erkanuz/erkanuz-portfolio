@@ -1,0 +1,126 @@
+.education {
+  width: min(100%, 1000px);
+  margin: 0 auto;
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1rem, 4vw, 3rem);
+  color: #17171b;
+}
+
+.title {
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto clamp(2.2rem, 4vw, 3rem);
+  padding-bottom: .6rem;
+  position: relative;
+  font-size: clamp(.95rem, 1.5vw, 1.15rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.04em;
+  text-transform: uppercase;
+
+  &::after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 2rem;
+    height: 2px;
+    content: '';
+    background: #5a41f5;
+    transform: translateX(-50%);
+  }
+}
+
+.timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(2rem, 8vw, 6rem);
+
+  &::before {
+    position: absolute;
+    top: 1.7rem;
+    right: 15%;
+    left: 15%;
+    height: 1px;
+    content: '';
+    background-image: linear-gradient(to right, #c5c8d7 45%, transparent 0%);
+    background-position: top;
+    background-size: 8px 1px;
+    background-repeat: repeat-x;
+  }
+}
+
+.item {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 1.52rem;
+    width: .42rem;
+    height: .42rem;
+    border-radius: 50%;
+    content: '';
+    background: #68708b;
+  }
+
+  &::before { left: -.2rem; }
+  &::after { right: -.2rem; }
+
+  &:first-child::before,
+  &:last-child::after { display: none; }
+
+  h3 {
+    margin: 1.05rem 0 .35rem;
+    font-size: clamp(.78rem, 1.2vw, .95rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -.035em;
+  }
+
+  p {
+    margin: 0;
+    color: #4a4a4f;
+    font-size: clamp(.68rem, 1vw, .8rem);
+    line-height: 1.35;
+  }
+}
+
+.icon {
+  display: grid;
+  width: 3.4rem;
+  height: 3.4rem;
+  margin: 0 auto;
+  place-items: center;
+  border: 1px solid #d9dbe5;
+  border-radius: .9rem;
+  background: #fff;
+  box-shadow: 0 .1rem .35rem rgba(49, 53, 88, .08);
+  color: #5a41f5;
+  font-size: 1.65rem;
+}
+
+@media (max-width: 600px) {
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+
+    &::before {
+      top: 2rem;
+      bottom: 2rem;
+      left: calc(50% - .5px);
+      right: auto;
+      width: 1px;
+      height: auto;
+      background-image: linear-gradient(to bottom, #c5c8d7 45%, transparent 0%);
+      background-size: 1px 8px;
+      background-repeat: repeat-y;
+    }
+  }
+
+  .item {
+    &::before,
+    &::after { display: none; }
+  }
+}
