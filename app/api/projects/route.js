@@ -6,7 +6,7 @@ export async function GET() {
     try {
         await connectMongoDB();
         const projects = await Projects.find().sort({ number: 1 });
-        // console.log('Fetched Projects:', projects); debugging
+        // console.log('Fetched Projects:', projects);
         return NextResponse.json({ projects });
     } catch (error) {
         console.error('Error fetching projects:', error);
